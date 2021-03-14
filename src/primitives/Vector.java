@@ -111,7 +111,6 @@ public class Vector {
   
         double product = 0; 
   
-        // Loop for calculate cot product 
             product = head.x.coord * b.getHead().x.coord; 
             product += head.y.coord * b.getHead().y.coord; 
             product += head.z.coord * b.getHead().z.coord; 
@@ -128,7 +127,7 @@ public class Vector {
 	
 	public Vector crossProduct(Vector v) { // 
 	  
-		    double xx = head.y.coord * v.getHead().x.coord - head.z.coord * v.getHead().y.coord; 
+		    double xx = head.y.coord * v.getHead().z.coord - head.z.coord * v.getHead().y.coord; 
 		    double yy = head.z.coord * v.getHead().x.coord - head.x.coord * v.getHead().z.coord; 
 		    double zz = head.x.coord * v.getHead().y.coord - head.y.coord * v.getHead().x.coord; 
 		    
