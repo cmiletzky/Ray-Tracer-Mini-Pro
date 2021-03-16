@@ -12,7 +12,7 @@ public class Ray {
 	 */
 	
 	public Ray(Vector vec, Point3D point) {
-		super();
+
 		this.vec = vec;
 		this.point = point;
 	}
