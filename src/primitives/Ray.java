@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.Objects;
+
 public class Ray {
 	
 	private Vector vec;
@@ -18,9 +20,22 @@ public class Ray {
 	}
 	
 	public Ray(Point3D point3d, Vector vec) {
-		super();
-		this.vec = vec;
+
+		this.vec = vec.normalize();
 		this.point = point3d;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Ray)) return false;
+		Ray ray = (Ray) o;
+		return this.point.equals(ray.point) && this.vec.equals(ray.vec);
+	}
+
+	@Override
+	public int hashCode() {
+		return 0;
 	}
 
 	/**
