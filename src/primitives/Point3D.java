@@ -8,10 +8,6 @@ public class Point3D {
 	
 	final Coordinate x,y,z; 
 
-	/**
-	 * getters
-	 * @return
-	 */
 	
 	/**
 	 * coordinate and double constructors
@@ -96,8 +92,8 @@ public class Point3D {
 	 */
 	public String toString() {
   	  return ("x: "+x
-  			  +"y: "+y
-  			  +"z: " +z);
+  			  +" y: "+y
+  			  +" z: " +z);
     }
 
 	

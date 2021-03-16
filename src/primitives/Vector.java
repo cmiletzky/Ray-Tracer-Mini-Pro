@@ -132,9 +132,6 @@ public class Vector {
 		    double zz = head.x.coord * v.getHead().y.coord - head.y.coord * v.getHead().x.coord; 
 		    
 		    return new Vector (xx,yy,zz);
-		
-		  
-
 	}
 
 	
@@ -185,10 +182,7 @@ public Vector normalize () {
 	 */
 	      public Vector normalized() {
 	  		
-	  		double length = length();
-	  	  
-	  		
-	  		
+	  		  		
 	  		Vector v1 = new Vector(this.getHead());
 	  		
 	  		v1.normalize();
