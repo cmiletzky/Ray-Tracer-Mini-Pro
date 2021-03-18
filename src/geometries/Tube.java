@@ -1,14 +1,14 @@
 package geometries;
 
-import java.util.List;
 
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
-public class Tube extends RadialGeometry {
+public class Tube implements Geometry {
 
-	private Ray _axisRay;
+	private Ray axisRay;
+	private double radius;
 	
 	/**
 	 * constructor - uses parent constr for radius
@@ -17,13 +17,16 @@ public class Tube extends RadialGeometry {
 	 */
 	
 	public Tube(double _radius, Ray ax) {
-		super(_radius);
-		_axisRay = new Ray(ax.getVec(),ax.getPoint());
-		// TODO Auto-generated constructor stub
+		radius = _radius;
+		axisRay = new Ray (ax.getVec(),ax.getPoint());
 	}
 
 	public Ray get_axisRay() {
-		return _axisRay;
+		return axisRay;
+	}
+
+	public double get_Radius() {
+		return radius;
 	}
 
 	/**
@@ -32,27 +35,14 @@ public class Tube extends RadialGeometry {
 	 */	
 	@Override
 	public String toString() {
-		return super.toString()+" axisRay=" + _axisRay;
+		return " radius= " +radius +"axisRay= "+axisRay;
 	}
 
 	@Override
 	public Vector getNormal(Point3D p) {
-		Vector v1 = _axisRay.getVec().normalized();
-		double d = v1.dotProduct(_axisRay.getPoint().subtract(p));
-		Point3D p1 = _axisRay.getPoint();
-		if(d!=0)  p1.add(v1.scale(d));
-		return _axisRay.getPoint().subtract(p1).normalized();
+		
+		return null;
 		
 	}
-
-	@Override
-	public List<Point3D> findIntsersections(Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
 
 }
