@@ -99,7 +99,7 @@ public class Vector {
 	}
 	/**
 	 * 
-	 * @param v
+	 * @param b
 	 * @return this vector dot v vector
 	 * 
 	 * https://www.geeksforgeeks.org/program-dot-product-cross-product-two-vector/
