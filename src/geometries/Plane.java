@@ -22,6 +22,7 @@ public class Plane implements Geometry {
 			
 	}
 	
+	
 	/**
 	 * point and normal vector constructor 
 	 */
