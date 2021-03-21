@@ -14,18 +14,19 @@ public class Cylinder extends Tube{
 	 * @return
 	 */
 	public double getHeight() {
+		
 		return height;
 	}
 
 	/**
-	 * constructor - uses parent constr
+	 * constructor - uses parent constructor
 	 * @param _radius
 	 * @param ax
 	 */
 
 	public Cylinder(double _radius, Ray ax, double height) {
 		super(_radius, ax);
-		height = height;
+		this.height = height;
 	}
 
 	
