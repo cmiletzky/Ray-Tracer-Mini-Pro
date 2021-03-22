@@ -304,7 +304,7 @@ public class VectorTests {
 		
 		// ============ Equivalence Partitions Tests ==============
 
-		// 3 test cases: 1 - positive, 2- negative, 3- includes 0's
+		// 3 test cases: 1  - positive, 2- negative, 3- includes 0's
 		 Vector v1 = new Vector(1, 1, 1);
 	     Vector v2 = new Vector(-2, -4, -6);
 	     Vector v3 = new Vector (0,0,1);
