@@ -14,7 +14,16 @@ public class Vector {
 		return head;
 	}
 
-
+	public double getX() {
+		return head.x.coord;
+	}
+	
+	public double getY() {
+		return head.y.coord;
+	}
+	public double getZ() {
+		return head.z.coord;
+	}
 	//	public Vector(double p, double angel) {
 //		this.size = p;
 //		this.angel = angel;
