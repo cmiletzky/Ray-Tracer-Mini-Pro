@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.Objects;
+
 public class Ray {
 	
 	private Vector vec;
@@ -12,9 +14,18 @@ public class Ray {
 	 */
 	
 	public Ray(Vector vec, Point3D point) {
+
 		this.vec = vec;
 		this.point = point;
 	}
+	
+
+	public Ray(Point3D point3d, Vector vec) {
+
+		this.vec = vec.normalize();
+		this.point = point3d;
+	}
+
 	
 	
 	/**

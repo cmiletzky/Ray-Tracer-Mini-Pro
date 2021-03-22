@@ -2,7 +2,7 @@ package geometries;
 
 import primitives.Point3D;
 
-public class Triangle extends Plane{
+public class Triangle extends Polygon{
 
 	/**
 	 * 
@@ -10,7 +10,7 @@ public class Triangle extends Plane{
 	 * @param p2
 	 * @param p3
 	 * 
-	 * 'super' constructor, from Plane
+	 * 'super' constructor, from Polygon
 	 */
 	
 	public Triangle(Point3D p1, Point3D p2, Point3D p3) {
