@@ -281,6 +281,17 @@ public class VectorTests {
 	 */
 	@Test
 	public void testNormalize() {
+		
+		// basic check
+		Vector v = new Vector(3.5,-5,10);
+		v.normalize();
+		assertEquals("", 1, v.length(),1e-10);
+		
+		
+		// ============ Equivalence Partitions Tests ==============
+		
+		//check for different vectors if after normalize we get 
+		//for each coordinate number bigger than 1
 		 Vector v1 = new Vector(1, 1, 1);
 	     Vector v2 = new Vector(-2, -4, -6);
 	     Vector v3 = new Vector (0,0,1);
@@ -292,6 +303,18 @@ public class VectorTests {
 	     assertFalse(v1.getX() >1||v1.getY()>1||v1.getZ()>1);
 	     assertFalse(v2.getX()>1||v2.getY()>1||v2.getZ()>1);
 	     assertFalse(v3.getX()>1||v3.getY()>1||v3.getZ()>1);
+	     
+	     
+	  // =============== Boundary Values Tests ==================
+	  // test zero vector need throw exception
+	     try {
+	    	 v = new Vector(0,0,0);
+	    	 v.normalize();
+	    	 fail("Didn't throw divide by zero exception!");
+	    	 } catch (ArithmeticException e) {
+	    	 assertTrue(true);
+	    	 }
+	     
 
 	
 	}
