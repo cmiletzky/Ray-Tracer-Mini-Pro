@@ -12,7 +12,7 @@ import primitives.Point3D;
 import primitives.Vector;
 
 /**
- * @author חייקי
+ * @author Michael Garusi & Haim Miletzky
  *
  */
 public class Point3DTests {
