@@ -15,6 +15,8 @@ public class Plane implements Geometry {
 	 * 3 points const - will be updated in the next task  as requested
 	 * 
 	 * updated - by the tirgul
+	 * TODO in case of two Points coalesce throw exception
+	 * TODO calculate normal by getNormal
 	 */
 	public Plane(Point3D p1, Point3D p2,Point3D p3) {
 			normal = null;
