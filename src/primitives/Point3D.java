@@ -22,6 +22,12 @@ public class Point3D {
 		z=_z;
 	}
 	
+	public Point3D(Point3D p1) { //constructor by coordinate
+		x=p1.x;
+		y=p1.y;
+		z=p1.z;
+	}
+	
 	public Point3D(double _x,double _y,double _z) {  //constructor by numbers (double)
 		x=new Coordinate(_x);
 		y=new Coordinate(_y);

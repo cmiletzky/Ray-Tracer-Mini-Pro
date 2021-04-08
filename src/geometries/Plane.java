@@ -18,22 +18,23 @@ public class Plane implements Geometry {
 	 * TODO in case of two Points coalesce throw exception
 	 * TODO calculate normal by getNormal
 	 */
-	public Plane(Point3D p1, Point3D p2,Point3D p3) {
-			normal = null;
-			q0= p1;
-			
-	}
-	
 	
 	/**
 	 * point and normal vector constructor 
 	 */
-	public Plane(Point3D p1, Vector v1) {
-		q0 = p1;
-		normal = new Vector(v1.getHead());
+	public Plane(Point3D p1,Vector normal11) {
+			normal = new Vector(normal11.getHead());
+			q0= p1;
+			
 	}
 	
-	
+	public Plane(Point3D x,Point3D y, Point3D z)
+    {
+        Vector a = new Vector(y.subtract(x).getHead());
+        Vector b = new Vector(z.subtract(x).getHead());
+        normal = new Vector(a.crossProduct(b).normalize().getHead());
+        q0 = new Point3D(x);
+    }
 	
 		
 
@@ -48,16 +49,16 @@ public class Plane implements Geometry {
 		return "p=" + q0 + ", _normal=" + normal ;
 	}
 	/**
-	 *   will be updated in the next task 
+	 * returns the normal
 	 */
 	public Vector getNormal() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.normal;
 	}
 
 	@Override
 	public Vector getNormal(Point3D p) {
-		// TODO Auto-generated method stub
-		return normal;
+		
+		return this.normal;
 	}
 }

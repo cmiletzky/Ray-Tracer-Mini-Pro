@@ -43,9 +43,13 @@ public class Sphere implements Geometry {
 	public String toString() {
 		return super.toString()+ " center=" + center + "]";
 	}
+	@Override
 	public Vector getNormal(Point3D p) {
-		return null;		
+					
+	Vector v=new Vector(p.subtract(center).getHead());
+	return v.normalize();
+	
+		
 	}
-
 	
 	}

@@ -37,7 +37,8 @@ public class Vector {
 	public Vector(double x1, double y1, double z1) {
 		Point3D p2  = new Point3D(x1, y1, z1);
 		//System.out.println(this.toString());
-		if(p2.equals(Point3D.ZERO)) throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
+		if(p2.equals(Point3D.ZERO))
+		throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
 		//if(x1==0&&y1==0&&z1==0) throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
 		head = new Point3D(x1,y1,z1);
 		
@@ -50,7 +51,7 @@ public class Vector {
 		Point3D p2= new Point3D(x1,y1,z1);
 		
 		//if(p2.equals(Point3D.ZERO) ) throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
-		if(x1.coord==0&&y1.coord==0&&z1.coord==0) throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
+		if(p2.equals(Point3D.ZERO)) throw new IllegalArgumentException("you can't add 0!!"); // in case of zero vector the progrem will throw IllegalArgumentException
  		
 		head = new Point3D(x1,y1,z1);
 		}

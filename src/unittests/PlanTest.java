@@ -48,7 +48,9 @@ public class PlanTest {
 		
 		
 	}
-	
+	/**
+	 * Test method for {@link geometries.Plane#getNormal()}.
+	 */
 	@Test
 	public void testGetNormal() {
 		// ============ Equivalence Partitions Tests ==============
@@ -64,3 +66,4 @@ public class PlanTest {
 		assertTrue(ans2.equals(p2.getNormal()));
 	}
 }
+
