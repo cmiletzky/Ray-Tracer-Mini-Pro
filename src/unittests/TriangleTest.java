@@ -23,6 +23,7 @@ public class TriangleTest {
 	 */
 	@Test
 	public void testGetNormal() {
+		// one equivalent partition, no boundary cases
 		Triangle t= new Triangle(new Point3D(0,0,0),new Point3D(1,2,0) , new Point3D(2,0,0));
 		assertEquals(new primitives.Vector(0, 0, -4), t.getNormal(new Point3D(1, 1, 1)).normalize());
 	}
