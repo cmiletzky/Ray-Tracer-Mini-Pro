@@ -145,7 +145,7 @@ public class VectorTests {
 
 
 	        try {
-	        	Vector v4test = v1.scale(0);	//ERROR excepted. v1 minus v1 should give us 0 - and throw exception
+	        	Vector v4test = v1.scale(0.0);	//ERROR excepted. v1 minus v1 should give us 0 - and throw exception
 				fail("Didn't throw, Problem - zero vector");
 
 	        } catch (IndexOutOfBoundsException e) {

@@ -48,7 +48,6 @@ public class Sphere implements Geometry {
 					
 	Vector v=new Vector(p.subtract(center).getHead());
 	return v.normalize();
-	
 		
 	}
 	

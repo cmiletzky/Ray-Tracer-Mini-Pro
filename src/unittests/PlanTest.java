@@ -36,7 +36,7 @@ public class PlanTest {
 		}catch (IllegalArgumentException e){
 			fail("Failed constructing a correct Plane");
 		}
-		//case 2 - 
+		//case 2 -all three point on the same axis
 		
 		try {
 			Plane p2 = new Plane(new Point3D(0.0, 1.0, 0.0), new Point3D(0.0, 2.0,0.0),

@@ -15,7 +15,7 @@ public class Plane implements Geometry {
 	 * 3 points const - will be updated in the next task  as requested
 	 * 
 	 * updated - by the tirgul
-	 * TODO in case of two Points coalesce throw exception
+	 * TODO in case of two Points coalesce or 3 point same axis throw exception
 	 * TODO calculate normal by getNormal
 	 */
 	
@@ -30,10 +30,13 @@ public class Plane implements Geometry {
 	
 	public Plane(Point3D x,Point3D y, Point3D z)
     {
-        Vector a = new Vector(y.subtract(x).getHead());
-        Vector b = new Vector(z.subtract(x).getHead());
-        normal = new Vector(a.crossProduct(b).normalize().getHead());
-        q0 = new Point3D(x);
+		
+			Vector a = new Vector(y.subtract(x).getHead());
+	        Vector b = new Vector(z.subtract(x).getHead());
+	        normal = new Vector(a.crossProduct(b).normalize().getHead());
+	        q0 = new Point3D(x);
+			
+		
     }
 	
 		

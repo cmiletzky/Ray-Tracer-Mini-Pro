@@ -14,7 +14,7 @@ public class SphereTests {
 	public void testGetNormal() {
 		Sphere s = new Sphere(1, new Point3D(0,0,0));
 		Vector ans = new Vector(1, 1, 1);
-		assertTrue(s.getNormal(new Point3D(1.0, 1.0, 1.0)).equals(ans));
+		assertTrue("wrong calculation",s.getNormal(new Point3D(1.0, 1.0, 1.0)).equals(ans));
 		
 	}
 
