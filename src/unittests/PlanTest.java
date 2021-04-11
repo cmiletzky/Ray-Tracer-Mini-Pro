@@ -32,9 +32,9 @@ public class PlanTest {
 		try {
 			Plane p3 = new Plane(new Point3D(0.0, 1.0, 0.0), new Point3D(0.0, 1.0, 0.0),
 					new Point3D(1.0, 0.0, 0.0));
+			fail("Failed constructing a correct Plane");
 
 		}catch (IllegalArgumentException e){
-			fail("Failed constructing a correct Plane");
 		}
 		//case 2 -all three point on the same axis
 		
@@ -58,12 +58,10 @@ public class PlanTest {
 		//case 1
 		Plane p1 = new Plane(new Point3D(0.0, 1.0, 1.0), new Point3D(0.0, 0.0, 1.0), new Point3D(0.0, 1.0, 0.0));
 		Vector ans1 = new Vector(1.0,0.0,0.0);
-		assertTrue(ans1.equals(p1.getNormal()));
+		Vector ans2 = new Vector(-1.0,0.0,0.0);
+		assertTrue(ans1.equals(p1.getNormal())||ans2.equals(p1.getNormal()));
 		
-		//case 2
-		Plane p2 = new Plane(new Point3D(1.0, 0.0, 0.0), new Point3D(0.0, 1.0, 0.0), new Point3D(0.0, 1.0, 1.0));
-		Vector ans2 = new Vector(1.0,-1.0,1.0);
-		assertTrue(ans2.equals(p2.getNormal()));
+
 	}
 }
 

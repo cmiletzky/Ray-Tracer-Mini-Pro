@@ -78,7 +78,7 @@ public class VectorTests {
       	fail("Didn't throw, Problem - zero vector");
 
 
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IllegalArgumentException e) {
         }
 
       	}
@@ -148,7 +148,7 @@ public class VectorTests {
 	        	Vector v4test = v1.scale(0.0);	//ERROR excepted. v1 minus v1 should give us 0 - and throw exception
 				fail("Didn't throw, Problem - zero vector");
 
-	        } catch (IndexOutOfBoundsException e) {
+	        } catch (IllegalArgumentException e) {
 	        }
 
 	      	}
@@ -311,7 +311,7 @@ public class VectorTests {
 	    	 v = new Vector(0,0,0);
 	    	 v.normalize();
 	    	 fail("Didn't throw divide by zero exception!");
-	    	 } catch (ArithmeticException e) {
+	    	 } catch (IllegalArgumentException e) {
 	    	 assertTrue(true);
 	    	 }
 	     

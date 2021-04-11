@@ -30,7 +30,11 @@ public class Plane implements Geometry {
 	
 	public Plane(Point3D x,Point3D y, Point3D z)
     {
-		
+		//doing subtract to check if there's two point that coalesce
+		//then throwing exception from the constructor of Vector
+		Vector check1=x.subtract(y);
+		Vector check2=x.subtract(z);
+		Vector check3=z.subtract(y);
 			Vector a = new Vector(y.subtract(x).getHead());
 	        Vector b = new Vector(z.subtract(x).getHead());
 	        normal = new Vector(a.crossProduct(b).normalize().getHead());

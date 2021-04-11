@@ -12,9 +12,9 @@ public class SphereTests {
 	// need check only one case
 	@Test
 	public void testGetNormal() {
-		Sphere s = new Sphere(1, new Point3D(0,0,0));
-		Vector ans = new Vector(1, 1, 1);
-		assertTrue("wrong calculation",s.getNormal(new Point3D(1.0, 1.0, 1.0)).equals(ans));
+		Sphere s = new Sphere(1, new Point3D(0.0,0.0,0.0));
+		Vector ans = new Vector(1.0, 0.0, 0.0);
+		assertTrue("wrong calculation",s.getNormal(new Point3D(1.0, 0.0, 0.0)).equals(ans));
 		
 	}
 
