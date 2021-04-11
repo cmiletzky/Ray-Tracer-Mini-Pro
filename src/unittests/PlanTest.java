@@ -59,7 +59,7 @@ public class PlanTest {
 		Plane p1 = new Plane(new Point3D(0.0, 1.0, 1.0), new Point3D(0.0, 0.0, 1.0), new Point3D(0.0, 1.0, 0.0));
 		Vector ans1 = new Vector(1.0,0.0,0.0);
 		Vector ans2 = new Vector(-1.0,0.0,0.0);
-		assertTrue(ans1.equals(p1.getNormal())||ans2.equals(p1.getNormal()));
+		assertTrue(p1.getNormal().equals(ans1)||p1.getNormal().equals(ans2));
 		
 
 	}

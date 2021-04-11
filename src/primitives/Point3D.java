@@ -1,4 +1,6 @@
+
 package primitives;
+import static primitives.Util.*;
 
 
 //import com.sun.org.apache.bcel.internal.Const;
@@ -8,7 +10,16 @@ public class Point3D {
 	
 	final Coordinate x,y,z; 
 
+	public double getX() {
+		return x.coord;
+	}
 	
+	public double getY() {
+		return y.coord;
+	}
+	public double getZ() {
+		return z.coord;
+	}
 	/**
 	 * coordinate and double constructors
 	 * @param _x
@@ -111,6 +122,8 @@ public class Point3D {
 		
 		Point3D p = (Point3D) p1; // casting to point (after the check)
 		
-		return(x.coord==p.x.coord&&y.coord==p.y.coord&&z.coord==p.z.coord);
+		return(isZero(x.coord-p.x.coord)&&isZero(y.coord-p.y.coord)&&isZero(z.coord-p.z.coord));
 	}
+
+	
 	}

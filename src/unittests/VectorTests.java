@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import primitives.Point3D;
 import static org.junit.Assert.*;
-
+import static primitives.Util.*;
 import org.junit.Test;
 
 import primitives.Vector;
@@ -208,8 +208,8 @@ public class VectorTests {
 
         System.out.println(vr.dotProduct(v1));
         // Test cross-product result orthogonality to its operands
-        assertTrue("crossProduct() result is not orthogonal to 1st operand", Vector.isZero(vr.dotProduct(v1)));
-        assertTrue("crossProduct() result is not orthogonal to 2nd operand", Vector.isZero(vr.dotProduct(v3)));
+        assertTrue("crossProduct() result is not orthogonal to 1st operand", isZero(vr.dotProduct(v1)));
+        assertTrue("crossProduct() result is not orthogonal to 2nd operand", isZero(vr.dotProduct(v3)));
 
         // =============== Boundary Values Tests ==================
         // test zero vector from cross-product of parallal vectors

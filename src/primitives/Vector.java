@@ -218,9 +218,6 @@ public Vector normalize () {
 		return "Vector [p1=" + head.toString() + "]";
 	}
 
-	public static boolean isZero(double num) {
-		
-		return num==0;
-	}
+	
 	      
 }
