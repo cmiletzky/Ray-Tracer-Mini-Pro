@@ -43,8 +43,10 @@ public class Tube implements Geometry {
 		
 		double t=axisRay.getVec().dotProduct(p.subtract(axisRay.getPoint()));
 		Point3D o;
+		// regular case
 		if(t!=0)
 			{ o=axisRay.getVec().scale(t).getHead();}
+		// Boundary value: if the axis of tube vertical to the (p-o)
 		else {
 			o= axisRay.getPoint();
 		}
