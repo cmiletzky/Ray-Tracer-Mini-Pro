@@ -50,5 +50,11 @@ public class Sphere implements Geometry {
 	return v.normalize();
 		
 	}
+
+	@Override
+	public List<Point3D> findIntsersections(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	}

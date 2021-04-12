@@ -68,4 +68,10 @@ public class Plane implements Geometry {
 		
 		return this.normal;
 	}
+
+	@Override
+	public List<Point3D> findIntsersections(Ray ray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
