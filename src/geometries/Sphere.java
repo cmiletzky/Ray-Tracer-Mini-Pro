@@ -62,8 +62,18 @@ public class Sphere implements Geometry {
 		
 		
 		Vector u=center.subtract(ray.getPoint());
+		try {
+			double tm=alignZero( V.dotProduct(u));
+//			if (tm==-(u.length())) {
+//				return List.of(center.add(V.scale(radius)));
+//			}
+		} catch (IllegalArgumentException e) {
+			// if V.dotProduct(u)==0 so they vertical 
+			 return null;
+		}
+		
 		double tm=alignZero( V.dotProduct(u));
-		double d=alignZero(Math.sqrt(u.lengthSquared()-tm*tm));
+		double d=alignZero(Math.sqrt(alignZero(u.lengthSquared()-tm*tm)));
 		
 		
 		// no intersection : the ray diraction is above the sphere
@@ -72,7 +82,7 @@ public class Sphere implements Geometry {
 		}
 		
 		
-		double th = alignZero(Math.sqrt(radius*radius- d*d));
+		double th = alignZero(Math.sqrt(alignZero(radius*radius- d*d)));
 		double t1= alignZero(tm-th);
 		double t2= alignZero(tm+th);
 

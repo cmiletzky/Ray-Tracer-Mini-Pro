@@ -152,6 +152,12 @@ public class SphereTests {
     assertNull("there should not be intersection point",
     		   sphere.findIntsersections(new Ray(new Point3D(3, 0, 0),
                        new Vector(0, 1, 0))));
+    
+    
+ // TODO   
+    Sphere sphere1= new Sphere( 4d,new Point3D(1, 1, 1));
+    List<Point3D> result1 = sphere1.findIntsersections(new Ray(new Point3D(2,2,2), new Vector(1,1,1)));
+    assertEquals("Wrong number of points",1, result1.size());
     }
 
 		
