@@ -81,8 +81,8 @@ public class SphereTests {
         // **** Group: Ray's line goes through the center
         // TC13: Ray starts before the sphere (2 points)
        
-        p1 = new Point3D(1, 1, 0);
-        p2 = new Point3D(1, -1, 0);
+        p1 = new Point3D(1, -1, 0);
+        p2 = new Point3D(1, 1, 0);
         result = sphere.findIntsersections(new Ray(new Point3D(1, -2, 0),
                                                                new Vector(0, 1, 0)));
        assertEquals("Wrong number of points", 2, result.size());

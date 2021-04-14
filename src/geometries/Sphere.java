@@ -3,10 +3,10 @@ package geometries;
 
 import java.util.ArrayList;
 import java.util.List;
+import static primitives.Util.*;
+import primitives.*;
+import java.lang.Math;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
 
 public class Sphere implements Geometry {
 	
@@ -53,6 +53,44 @@ public class Sphere implements Geometry {
 
 	@Override
 	public List<Point3D> findIntsersections(Ray ray) {
+		// in case that P0 is same as center
+		Point3D p0=ray.getPoint();
+		Vector V= ray.getVec();
+		if (p0.equals(center)) {
+			return List.of(center.add(V.scale(radius)));
+		}
+		
+		
+		Vector u=center.subtract(ray.getPoint());
+		double tm=alignZero( V.dotProduct(u));
+		double d=alignZero(Math.sqrt(u.lengthSquared()-tm*tm));
+		
+		
+		// no intersection : the ray diraction is above the sphere
+		if (d>=radius) {
+			return null;
+		}
+		
+		
+		double th = alignZero(Math.sqrt(radius*radius- d*d));
+		double t1= alignZero(tm-th);
+		double t2= alignZero(tm+th);
+
+		if (t1 > 0 && t2 > 0) {
+			Point3D p1 = p0.add(V.scale(t1));
+			Point3D p2 = p0.add(V.scale(t2));
+			return List.of(p1,p2);
+		}
+		 if (t1>0) {
+				Point3D p1 = p0.add(V.scale(t1));
+				return List.of(p1);
+		}
+		 if (t2>0) {
+				Point3D p2 = p0.add(V.scale(t2));
+				return List.of(p2);
+		}
+		
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
