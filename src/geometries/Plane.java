@@ -5,6 +5,7 @@ import java.util.List;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
+import static primitives.Util.*;
 
 public class Plane implements Geometry {
 	
@@ -23,7 +24,7 @@ public class Plane implements Geometry {
 	 * point and normal vector constructor 
 	 */
 	public Plane(Point3D p1,Vector normal11) {
-			normal = new Vector(normal11.getHead());
+			normal = normal11.normalized();
 			q0= p1;
 			
 	}
@@ -69,9 +70,44 @@ public class Plane implements Geometry {
 		return this.normal;
 	}
 
+	
+
 	@Override
-	public List<Point3D> findIntsersections(Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List<Point3D> findIntersections(Ray ray) {
+        Point3D P0 = ray.getPoint();   //040
+        Vector v = ray.getVec();    //010
+
+        Vector n = normal;  //010
+
+        if(q0.equals(P0)){
+            return  null;
+        }
+
+        Vector P0_Q0 = q0.subtract(P0);  //200 -040 = 2 -4 0
+
+        double mechane = alignZero(n.dotProduct(P0_Q0)); //010 . 2 -4 0 = -4
+
+        //
+        if (isZero(mechane)){
+            return null;
+        }
+
+        //mone
+        double nv = alignZero(n.dotProduct(v));  //010 . 010 = 1
+
+        // ray is lying in the plane axis
+        if(isZero(nv)){
+            return null;
+        }
+
+        double  t = alignZero(mechane / nv); //-4
+
+        if (t <=0){
+            return  null;
+        }
+        Point3D P = ray.getPoint(t);
+
+        return List.of(P);
+    }
 }
+

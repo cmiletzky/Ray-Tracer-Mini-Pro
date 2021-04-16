@@ -52,7 +52,7 @@ public class Sphere implements Geometry {
 	}
 
 	@Override
-	public List<Point3D> findIntsersections(Ray ray) {
+	public List<Point3D> findIntersections(Ray ray) {
 		// in case that P0 is same as center
 		Point3D p0=ray.getPoint();
 		Vector V= ray.getVec();

@@ -1,6 +1,7 @@
 package primitives;
 
 import java.util.Objects;
+import static primitives.Util.*;
 
 public class Ray {
 	
@@ -64,5 +65,14 @@ public class Ray {
    	  Ray v = (Ray) v1;  // cast v1 to Ray after the test above
    	  return(vec.equals(v.vec)&&point.equals(v.point));
      }
+
+/**
+ * refactoring for get new Point3d by scaling the vector diraction of ray
+ * @param t
+ * @return
+ */
+	public Point3D getPoint(double t) {
+		return getPoint().add(getVec().scale(t));
+	}
 	
 }

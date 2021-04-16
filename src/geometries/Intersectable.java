@@ -13,5 +13,5 @@ import primitives.*;
  *  can have intersected point by some ray
  */
 public interface Intersectable {
-	List<Point3D> findIntsersections(Ray ray);
+	List<Point3D> findIntersections(Ray ray);
 }
