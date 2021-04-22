@@ -26,12 +26,12 @@ public class Camera {
 
 	if (!isZero(vUp.dotProduct(vTo))) {
 		
-		throw new IllegalArgumentException("vUp and vTo must be orthogonal")
+		throw new IllegalArgumentException("vUp and vTo must be orthogonal");
 	  }
 	this.p0=p0;
 	this.vTo=vTo.normalized();
 	this.vUp=vUp.normalized();
-	vRight= vTo.crossProduct(vUp)p0;
+	this.vRight= vTo.crossProduct(vUp);
 	
 	}
 
@@ -77,32 +77,41 @@ public class Camera {
 
 
 
-	Ray constructRay(int nx, int ny, int i, int j)
-	{
-		Point3D pc= p0.add(vTo.scale(distance));
-		double Rx = width/nx;
-		double Ry = height/ny;
-		
-		
-		Point3D pij = pc;
-		double yi = -Ry * (i - (ny - 1)/2d);
-		double xj = Rx * (i - (nx - 1)/2d);
+	public Ray constructRayThroughPixel(int nX, int nY, int j, int i){
+        Point3D pc = p0.add(vTo.scale(distance));
+        double rY = height / nY;
+        // Pixel's Width
+        double rX = width / nX;
 
-	}
+        //Pij is for Point on a certain pixel
+        Point3D pij = pc;
+
+        //delta y
+        double yI = - (i - (nY - 1) / 2d) * rY;
+        // delta x
+         double xJ = (j - (nX - 1) / 2d) * rX;
+
+         // taking into account when Xj is zero in order to avoid scaling a vector in zero
+         if(!isZero(xJ)){
+             pij = pij.add(vRight.scale(xJ));
+         }
+        // taking into account when Yi is zero in order to avoid scaling a vector in zero
+         if(!isZero(yI)){
+             pij = pij.add(vUp.scale(yI));
+         }
+
+         Vector vij = pij.subtract(p0);
+ 		
+ 		
+ 		return new Ray(p0, vij)   ;
+ 		}
 
 
 
-	public Camera setVpDistance(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
-
-	public Object setVpSize(int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 
