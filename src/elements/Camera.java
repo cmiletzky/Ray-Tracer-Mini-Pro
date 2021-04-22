@@ -80,30 +80,25 @@ public class Camera {
 	public Ray constructRayThroughPixel(int nX, int nY, int j, int i){
         Point3D pc = p0.add(vTo.scale(distance));
         double rY = height / nY;
-        // Pixel's Width
         double rX = width / nX;
 
-        //Pij is for Point on a certain pixel
         Point3D pij = pc;
 
-        //delta y
         double yI = - (i - (nY - 1) / 2d) * rY;
-        // delta x
          double xJ = (j - (nX - 1) / 2d) * rX;
 
-         // taking into account when Xj is zero in order to avoid scaling a vector in zero
+         
          if(!isZero(xJ)){
              pij = pij.add(vRight.scale(xJ));
          }
-        // taking into account when Yi is zero in order to avoid scaling a vector in zero
          if(!isZero(yI)){
              pij = pij.add(vUp.scale(yI));
          }
 
+         
          Vector vij = pij.subtract(p0);
  		
- 		
- 		return new Ray(p0, vij)   ;
+ 		return new Ray(p0, vij);
  		}
 
 
