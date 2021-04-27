@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 import static primitives.Util.*;
 
@@ -73,6 +75,34 @@ public class Ray {
  */
 	public Point3D getPoint(double t) {
 		return getPoint().add(getVec().scale(t));
+	}
+	
+	/**
+	 * find the closet point to p0 and return it
+	 * @param intersections list of intersection points
+	 * @return closet point to p0
+	 */
+	public Point3D findClosestPoint (List<Point3D> intersections)
+	{
+	Point3D result = null;
+	double closeDistance = Double.MAX_VALUE;
+	
+	// first check if the list is not empty
+	if (intersections != null) {
+		
+	
+	for (Point3D p : intersections) {
+		double temp = this.point.distance(p);
+		if (temp < closeDistance) {
+			closeDistance = temp;
+			result = p;
+			}
+		
+		
+		}
+	}
+	
+	return result;
 	}
 	
 }

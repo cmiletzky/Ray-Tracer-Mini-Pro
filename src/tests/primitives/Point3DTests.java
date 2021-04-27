@@ -52,5 +52,15 @@ public class Point3DTests {
 //      if (!Point3D.ZERO.equals(p1.add(new Vector(-1, -2, -3))))
 //          out.println("ERROR: Point + Vector does not work correctly");
 	}
+	
+	
+	@Test
+	public void testdistance() {
+		Point3D p1 = new  Point3D(1,2,3);
+		Point3D p2 = new Point3D(7,8,9);
+
+		assertEquals("distance isnt corect", 10.392304845413264, p1.distance(p2),0.000000000001);
+		
+	}
 
 }

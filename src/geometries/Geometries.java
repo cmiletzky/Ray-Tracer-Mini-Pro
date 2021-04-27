@@ -30,7 +30,7 @@ public class Geometries implements Intersectable {
 	 * func to add new items 
 	 * @param intersectables
 	 */
-	private void add(Intersectable... intersectables) {
+	public void add(Intersectable... intersectables) {
 		for(Intersectable item:intersectables)
 		{
 			this.intersectables.add(item);
