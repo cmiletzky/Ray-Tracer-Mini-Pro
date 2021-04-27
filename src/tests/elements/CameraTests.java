@@ -1,4 +1,4 @@
-package unittests;
+package tests.elements;
 
 import static org.junit.Assert.*;
 
@@ -14,7 +14,7 @@ import primitives.*;
  *
  */
 public class CameraTests {
-
+ 
 	/**
 	 * Test method for
 	 * {@link elements.Camera#constructRayThroughPixel(int, int, int, int)}.

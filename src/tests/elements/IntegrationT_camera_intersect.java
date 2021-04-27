@@ -1,4 +1,4 @@
-package unittests;
+package tests.elements;
 
 import geometries.*;
 import org.junit.Test;
