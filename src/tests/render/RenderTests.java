@@ -19,7 +19,7 @@ public class RenderTests {
 			.setViewPlaneSize(500, 500);
 
 	/**
-	 * Produce a scene with basic 3D model and render it into a jpeg image with a
+	 * Produce a scene with basic 3D model and render it into a jpeg image with a grid
 	 * grid
 	 */
 	@Test
