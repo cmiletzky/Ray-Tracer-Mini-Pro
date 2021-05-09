@@ -8,7 +8,7 @@ import primitives.*;
 import java.lang.Math;
 
 
-public class Sphere implements Geometry {
+public class Sphere extends Geometry {
 	
 	private Point3D center;
 	private double radius;
@@ -51,8 +51,8 @@ public class Sphere implements Geometry {
 		
 	}
 
-	@Override
-	public List<Point3D> findIntersections(Ray ray) {
+	
+	public List<Point3D> findIntersectionsPoints(Ray ray) {
 		// in case that P0 is same as center
 		Point3D p0=ray.getPoint();
 		Vector V= ray.getVec();
@@ -105,4 +105,21 @@ public class Sphere implements Geometry {
 		return null;
 	}
 	
+	
+	/**
+	 * findGeoIntersections implementation return list of geopoints
+	 */
+	public List<GeoPoint> findGeoIntersections(Ray ray) {
+        List<Point3D> intersections = findIntersectionsPoints(ray);
+        if(intersections != null){
+            GeoPoint geoPoint = new GeoPoint(this, intersections.get(0));
+            if(intersections.size() == 2){
+                GeoPoint geoPoint2 = new GeoPoint(this, intersections.get(1));
+                return List.of(geoPoint,geoPoint2);
+            }
+            return List.of(geoPoint);
+        }
+        return null;
+	
 	}
+}

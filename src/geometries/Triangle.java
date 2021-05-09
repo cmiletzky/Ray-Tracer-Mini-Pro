@@ -20,11 +20,10 @@ public class Triangle extends Polygon{
 	public Triangle(Point3D p1, Point3D p2, Point3D p3) {
 		super(p1, p2, p3);
 	}
-	@Override
-	public List<Point3D> findIntersections(Ray ray) {
+	public List<Point3D> findIntersectionsPoints(Ray ray) {
 		
 		// if ray dosnt intersect the plan consist in triangle return null
-		if (this.plane.findIntersections(ray)==null) {
+		if (this.plane.findIntersectionsPoints(ray)==null) {
 			return null;
 		}
 		Vector v= ray.getVec();
@@ -45,7 +44,7 @@ public class Triangle extends Polygon{
 		if ((v.dotProduct(N1)>0&&v.dotProduct(N2)>0&&v.dotProduct(N3)>0) ||
 				(v.dotProduct(N1)<0&&v.dotProduct(N2)<0&&v.dotProduct(N3)<0))
 		{
-			List<Point3D> ret =this.plane.findIntersections(ray);
+			List<Point3D> ret =this.plane.findIntersectionsPoints(ray);
 			
 			return ret;
 		}
@@ -53,6 +52,16 @@ public class Triangle extends Polygon{
 			return null;
 
 	}
+	
+	
+	 public List<GeoPoint> findGeoIntersections(Ray ray) {
+	        List<Point3D> intersectedPoint = findIntersectionsPoints(ray);
+	        if(intersectedPoint != null){
+	            GeoPoint geoPoint = new GeoPoint(this, intersectedPoint.get(0));
+	            return List.of(geoPoint);
+	        }
+	        return null;
+	    }
 	
 
 	

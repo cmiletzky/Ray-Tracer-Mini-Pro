@@ -48,19 +48,19 @@ public class TriangleTest {
 		Vector v= new Vector(0, 0, 1);
 		Ray ray=new Ray(new Point3D(2,1,0), v);
 		Point3D P = new Point3D(2,1,2); // expected intersect point
-		List<Point3D> result = triangle.findIntersections(ray);
+		List<Point3D> result = triangle.findIntersectionsPoints(ray);
 		assertEquals("Wrong number of points", 1, result.size());
 		assertEquals("Ray intersects the plane", List.of(P), result);
 		
 		
 		// TC 2: Ray not intersect the triangle and goes against edge
 		ray=new Ray(new Point3D(1,-1,0), v);
-		result = triangle.findIntersections(ray);
+		result = triangle.findIntersectionsPoints(ray);
 		assertNull("ray shouldnt intersect, ray against edge", result);
 		
 		// TC 3: Ray not intersect the triangle and goes against vertax
 		ray=new Ray(new Point3D(2,-3,0), v);
-		result = triangle.findIntersections(ray);
+		result = triangle.findIntersectionsPoints(ray);
 		assertNull("ray shouldnt intersect, ray against vertax", result);
 		
 		
@@ -68,17 +68,17 @@ public class TriangleTest {
 		
 		// TC 10: ray goes through edge
 		ray=new Ray(new Point3D(2,0,0), v);
-		result = triangle.findIntersections(ray);
+		result = triangle.findIntersectionsPoints(ray);
 		assertNull("ray shouldnt intersect, ray against vertax", result);
 		
 		// TC 11: ray goes through vertax
 		ray=new Ray(new Point3D(3,0,0), v);
-		result = triangle.findIntersections(ray);
+		result = triangle.findIntersectionsPoints(ray);
 		assertNull("ray shouldnt intersect, ray against vertax", result);
 
 		// TC 11: ray goes through vertax
 		ray=new Ray(new Point3D(4,0,0), v);
-		result = triangle.findIntersections(ray);
+		result = triangle.findIntersectionsPoints(ray);
 		assertNull("ray shouldnt intersect, ray against vertax", result);
 		
 	}

@@ -41,7 +41,7 @@ public class Scene {
 	 * @param ambientlight the ambientlight to set
 	 * @return 
 	 */
-	public Scene setAmbientlight(AmbientLight ambientlight) {
+	public Scene setAmbientLight(AmbientLight ambientlight) {
 		this.ambientlight = ambientlight;
 		return this;
 	}

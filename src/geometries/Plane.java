@@ -7,7 +7,7 @@ import primitives.Ray;
 import primitives.Vector;
 import static primitives.Util.*;
 
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 	
 	private Point3D q0;
 	private Vector normal;
@@ -72,35 +72,39 @@ public class Plane implements Geometry {
 
 	
 
-	@Override
-    public List<Point3D> findIntersections(Ray ray) {
-        Point3D P0 = ray.getPoint();   //040
-        Vector v = ray.getVec();    //010
+	/**
+	 * private method assist to find intersected points
+	 * @param ray
+	 * @return
+	 */
+    public List<Point3D> findIntersectionsPoints(Ray ray) {
+        Point3D P0 = ray.getPoint();   
+        Vector v = ray.getVec();  
 
-        Vector n = normal;  //010
+        Vector n = normal; 
 
         if(q0.equals(P0)){
             return  null;
         }
 
-        Vector P0_Q0 = q0.subtract(P0);  //200 -040 = 2 -4 0
+        Vector P0_Q0 = q0.subtract(P0); 
 
-        double mechane = alignZero(n.dotProduct(P0_Q0)); //010 . 2 -4 0 = -4
+        double mechane = alignZero(n.dotProduct(P0_Q0)); 
 
-        //
+        
         if (isZero(mechane)){
             return null;
         }
 
         //mone
-        double nv = alignZero(n.dotProduct(v));  //010 . 010 = 1
+        double nv = alignZero(n.dotProduct(v));  
 
         // ray is lying in the plane axis
         if(isZero(nv)){
             return null;
         }
 
-        double  t = alignZero(mechane / nv); //-4
+        double  t = alignZero(mechane / nv);
 
         if (t <=0){
             return  null;
@@ -109,5 +113,20 @@ public class Plane implements Geometry {
 
         return List.of(P);
     }
+	
+	
+	/**
+	 * findGeoIntersections implemention
+	 */
+	  @Override
+	    public List<GeoPoint> findGeoIntersections(Ray ray){
+	        List<Point3D> intersectedPoint = findIntersectionsPoints(ray);
+	        if(intersectedPoint != null){
+	            GeoPoint geoPoint = new GeoPoint(this, intersectedPoint.get(0));
+	            return List.of(geoPoint);
+	        }
+	        return null;
+	    }
+	
 }
 

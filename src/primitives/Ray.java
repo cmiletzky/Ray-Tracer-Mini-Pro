@@ -1,6 +1,7 @@
 package primitives;
 
 import java.util.Iterator;
+import geometries.Intersectable.GeoPoint;
 import java.util.List;
 import java.util.Objects;
 import static primitives.Util.*;
@@ -104,5 +105,29 @@ public class Ray {
 	
 	return result;
 	}
+	
+	
+	/**
+     * find closest geo point to ray intersects it
+     * @param intersections list of GeoPoints that ray from camera intersects it
+     * @return closest GeoPoint to ray from camera
+     */
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> intersections){
+       GeoPoint geoPoint = null;
+        double closeDistance = Double.MAX_VALUE;
+
+        // first check if the list is not empty
+        if (intersections != null) {
+            for (GeoPoint gp:intersections) {
+                double temp = this.point.distance(gp.point);
+                if (temp < closeDistance) {
+                    closeDistance = temp;
+                    geoPoint = gp;
+                }
+
+            }
+        }
+        return geoPoint;
+    }
 	
 }

@@ -128,7 +128,7 @@ public class Render {
 		int Nx = imageWriter.getNx();
 		int Ny = imageWriter.getNy();
 		
-		for (int i = 0; i < Ny; i++) {
+		for (int i = 0; i < Ny; i++) {//TODO improovment by += interval
 				for (int j = 0; j < Nx; j++) {
 					if (i % interval == 0 || j % interval == 0) {
 						imageWriter.writePixel(j, i, color);
