@@ -86,11 +86,10 @@ public class Polygon extends Geometry {
 		return plane.getNormal();
 	}
 
-	@Override
-	public List<Point3D> findIntersectionsPoints(Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public List<Point3D> findIntersectionsPoints(Ray ray) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public List<GeoPoint> findGeoIntersections(Ray ray) {

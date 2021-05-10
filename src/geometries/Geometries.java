@@ -39,21 +39,21 @@ public class Geometries implements Intersectable {
 	}
 	
 	
-	public List<Point3D> findIntersectionsPoints(Ray ray) {
-		List<Point3D> result = null;
-		for (Intersectable item : intersectables) {
-			List<Point3D>intersections= item.findIntersectionsPoints(ray);
-			if (intersections!=null) {
-				if (result==null) {
-					result=new LinkedList<>();
-				}
-				result.addAll(intersections);
-				
-			}
-		}
-
-		return result;
-	}
+//	public List<Point3D> findIntersectionsPoints(Ray ray) {
+//		List<Point3D> result = null;
+//		for (Intersectable item : intersectables) {
+//			List<Point3D>intersections= item.findIntersectionsPoints(ray);
+//			if (intersections!=null) {
+//				if (result==null) {
+//					result=new LinkedList<>();
+//				}
+//				result.addAll(intersections);
+//				
+//			}
+//		}
+//
+//		return result;
+//	}
 
 	@Override
 	public List<GeoPoint> findGeoIntersections(Ray ray) {

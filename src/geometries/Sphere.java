@@ -52,7 +52,7 @@ public class Sphere extends Geometry {
 	}
 
 	
-	public List<Point3D> findIntersectionsPoints(Ray ray) {
+	private List<Point3D> findIntersectionsPoints(Ray ray) {
 		// in case that P0 is same as center
 		Point3D p0=ray.getPoint();
 		Vector V= ray.getVec();

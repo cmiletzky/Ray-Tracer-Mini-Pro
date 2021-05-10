@@ -5,6 +5,7 @@ package geometries;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import primitives.*;
 
@@ -15,7 +16,12 @@ import primitives.*;
  */
 public interface Intersectable {
 	
-	public List<Point3D> findIntersectionsPoints(Ray ray);
+	default List<Point3D> findIntersections(Ray ray) {
+	    var geoList = findGeoIntersections(ray);
+	    return geoList == null ? null
+	                           : geoList.stream().map(gp -> gp.point).collect(Collectors.toList());
+	}
+
 	public List<GeoPoint> findGeoIntersections ( Ray ray);
 	
 	/**
