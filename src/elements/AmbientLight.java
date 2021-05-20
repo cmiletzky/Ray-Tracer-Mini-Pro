@@ -9,32 +9,21 @@ import primitives.Color;
  * have some default light no matter what other light we adding letter.
  *
  */
-public class AmbientLight {
-	/**
-	 * intensity of ambient light
-	 */
-	final private Color intensity ;
+public class AmbientLight extends Light {
 	
-	
-	/**
-	 * constructor
-	 * @param Ia intensity color
-	 * @param Ka constant
-	 */
+	public AmbientLight() {
+		super(Color.BLACK);
+	}
 	
 	public AmbientLight(Color Ia, double Ka) {
-		this.intensity = Ia.scale(Ka);
+		super(Ia.scale(Ka));
 	}
-
-
-
-/**
- * get intensity color
- * @return
- */
 	public Color getIntensity() {
-		return intensity;
+		return this.intensity;
 	}
 	
+
+
+
 
 }
