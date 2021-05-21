@@ -16,11 +16,11 @@ public class Material {
     /**
      *  reflection 
      */
-    public double kr = 1;
+    public double kr = 0;
     /**
      * trancperency (refrction)
      */
-    public double kt = 1;
+    public double kt = 0;
 
     /**
      * default constructor
