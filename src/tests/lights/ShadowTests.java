@@ -62,7 +62,7 @@ public class ShadowTests {
 						.setKl(1E-5).setKq(1.5E-7));
 
 		Render render = new Render(). //
-				setImageWriter(new ImageWriter("shadowSphereTriangleInitial2222", 400, 400)) //
+				setImageWriter(new ImageWriter("TriangleMoovement2222", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracerBase(new RayTracerBasic(scene));
 		render.renderImage();
@@ -86,7 +86,7 @@ public class ShadowTests {
 						.setKl(1E-5).setKq(1.5E-7));
 
 		Render render = new Render(). //
-				setImageWriter(new ImageWriter("shadowSphereTriangleInitial3333", 400, 400)) //
+				setImageWriter(new ImageWriter("TriangleMovement3333", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracerBase(new RayTracerBasic(scene));
 		render.renderImage();
@@ -106,11 +106,34 @@ public class ShadowTests {
 						.setMaterial(new Material().setKd(0.5).setKs(0.5).setNShininess(30)) //
 		);
 		scene.lights.add( //
-				new SpotLight(new Color(400, 240, 0), new Point3D(-100, -100, 200), new Vector(1, 1, -3)) //
+				new SpotLight(new Color(400, 240, 0), new Point3D(-90, -90, 168), new Vector(1, 1, -3)) //
 						.setKl(1E-5).setKq(1.5E-7));
 
 		Render render = new Render(). //
-				setImageWriter(new ImageWriter("shadowSphereTriangleInitial4444", 400, 400)) //
+				setImageWriter(new ImageWriter("LightMovement4444", 400, 400)) //
+				.setCamera(camera) //
+				.setRayTracerBase(new RayTracerBasic(scene));
+		render.renderImage();
+		render.writeToImage();
+	}
+	
+	
+	@Test
+	public void sphereTriangleInitial555() {
+		scene.geometries.add( //
+				new Sphere(60, new Point3D(0, 0, -200)) //
+						.setEmmission(new Color(java.awt.Color.BLUE)) //
+						.setMaterial(new Material().setKd(0.5).setKs(0.5).setNShininess(30)), //
+				new Triangle(new Point3D(-70, -40, 0), new Point3D(-40, -70, 0), new Point3D(-68, -68, -4)) //
+						.setEmmission(new Color(java.awt.Color.BLUE)) //
+						.setMaterial(new Material().setKd(0.5).setKs(0.5).setNShininess(30)) //
+		);
+		scene.lights.add( //
+				new SpotLight(new Color(400, 240, 0), new Point3D(-80, -80, 63), new Vector(1, 1, -3)) //
+						.setKl(1E-5).setKq(1.5E-7));
+
+		Render render = new Render(). //
+				setImageWriter(new ImageWriter("LightMovement5555", 400, 400)) //
 				.setCamera(camera) //
 				.setRayTracerBase(new RayTracerBasic(scene));
 		render.renderImage();
@@ -150,5 +173,8 @@ public class ShadowTests {
 		render.renderImage();
 		render.writeToImage();
 	}
+	
+	
+	
 
 }
