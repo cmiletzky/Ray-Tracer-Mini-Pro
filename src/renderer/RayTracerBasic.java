@@ -108,7 +108,7 @@ public class RayTracerBasic extends RayTracerBase {
 		color = color.add(calcLocalEffects(intersection, ray,k));
 		return 1 == level ? color : color.add(calcGlobalEffects(intersection, ray, level, k));
 	}
-	/**
+	/** 
      * this function is responsible of painting in the appropriate color for a certain point of
      * intersection btn shape and camera
      * @param gp geoPoint contains the shape in which the ray intersects and the point of intersection

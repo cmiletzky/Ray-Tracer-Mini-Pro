@@ -187,5 +187,20 @@ public class LightsTests {
         render.renderImage();
         render.writeToImage();
     }
+    
+//    @Test
+//	public void spherePoint2() {
+//		scene1.geometries.add(sphere);
+//		scene1.lights.add(new PointLight(new Color(500, 300, 0), new Point3D(-50, -50, 50))//
+//				.setKl(0.00001).setKq(0.000001));
+//
+//		ImageWriter imageWriter = new ImageWriter("lightSpherePoint99999", 500, 500);
+//		Render render = new Render()//
+//				.setImageWriter(imageWriter) //
+//				.setCamera(camera1) //
+//				.setRayTracerBase(new RayTracerBasic(scene1));
+//		render.renderImage(9);
+//		render.writeToImage();
+//	}
 }
 

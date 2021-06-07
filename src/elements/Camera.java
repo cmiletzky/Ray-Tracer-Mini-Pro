@@ -8,6 +8,8 @@ import primitives.Ray;
 import primitives.Vector;
 import static primitives.Util.*;
 
+import java.awt.Point;
+
 /**
  * @author chaim & michael
  *
@@ -78,6 +80,29 @@ public class Camera {
 
 
 	public Ray constructRayThroughPixel(int nX, int nY, int j, int i){
+		Point3D pij= findPIJ ( nX,  nY,  j,  i);
+
+         
+         Vector vij = pij.subtract(p0);
+ 		
+ 		return new Ray(p0, vij);
+ 		}
+	
+	
+	//----------------------------------------new------------
+	//----------------------------------------new------------
+	//----------------------------------------new------------
+	public Ray constructRayThroughPixel(int nX, int nY, int j, int i,int numOfSample){
+		
+		Point3D pij= findPIJ ( nX,  nY,  j,  i);
+ 
+         Vector vij = pij.subtract(p0);
+ 		
+ 		return new Ray(p0, vij);
+ 		}
+
+	
+	Point3D findPIJ (int nX, int nY, int j, int i) {
         Point3D pc = p0.add(vTo.scale(distance));
         double rY = height / nY;
         double rX = width / nX;
@@ -92,17 +117,19 @@ public class Camera {
              pij = pij.add(vRight.scale(xJ));
          }
          if(!isZero(yI)){
-             pij = pij.add(vUp.scale(yI));
+             pij = pij.add(vUp.scale(yI)); 
          }
+         return pij;
+	}
+	
 
          
-         Vector vij = pij.subtract(p0);
+         
  		
- 		return new Ray(p0, vij);
+ 		
  		}
 
 
-
 	
 
 
@@ -114,4 +141,4 @@ public class Camera {
 
 
 
-}
+

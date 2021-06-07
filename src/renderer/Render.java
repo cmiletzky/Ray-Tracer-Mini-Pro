@@ -8,6 +8,7 @@ import primitives.*;
 import scene.Scene;
 
 import java.awt.Color;
+import java.util.Iterator;
 import java.util.MissingResourceException;
 /**
  * @author chaim & michael
@@ -116,12 +117,62 @@ public class Render {
 			throw new UnsupportedOperationException( e.getClassName() + " not initialized");
 		}
 	 }
+	 
+	 public void renderImage(int numberOfsampel) {
+		 try {
+			 if (imageWriter==null) {
+				throw new MissingResourceException("missing resource", ImageWriter.class.getCanonicalName(), "");
+			}
+//			 if (scene==null) {
+//					throw new MissingResourceException("missing resource", Scene.class.getCanonicalName(), "");
+//				}
+			 if (camera==null) {
+					throw new MissingResourceException("missing resource", Camera.class.getCanonicalName(), "");
+				}
+			 if (rayTracerBase==null) {
+					throw new MissingResourceException("missing resource", RayTracerBase.class.getCanonicalName(), "");
+				}
+			 // if all right ... rendering the image 
+			 int Nx = imageWriter.getNx();
+			 int Ny = imageWriter.getNy();
+			 for (int i = 0; i < Ny; i++) {
+				 for (int j = 0; j < Nx; j++) {
+					 
+					 
+					 Ray ray1 = camera.constructRayThroughPixel(Nx, Ny, j, i);
+					 primitives.Color pixelColor = rayTracerBase.traceRay(ray1);
+					 double red =pixelColor.getColor().getRed();
+					 double green =pixelColor.getColor().getGreen();
+					 double blue =pixelColor.getColor().getBlue();
+					 
+					 
+					for (int j2 = 0; j2 < numberOfsampel; j2++) {
+						for (int k = 0; k < numberOfsampel; k++) {
+							Ray ray = camera.constructRayThroughPixel(numberOfsampel, numberOfsampel, j2, k,numberOfsampel);
+							 primitives.Color pixelColor1 = rayTracerBase.traceRay(ray);
+							 red += pixelColor.getColor().getRed();
+							 green+= pixelColor.getColor().getGreen();
+							 blue+= pixelColor.getColor().getBlue();
+							
+						}
+						
+					}
+					
+					 primitives.Color pixelColor2 = new primitives.Color(avrageColor(red, green, blue, numberOfsampel));
+					 imageWriter.writePixel(j,i,pixelColor2);
+				}
+			}
+			
+		} catch (MissingResourceException e) {
+			throw new UnsupportedOperationException( e.getClassName() + " not initialized");
+		}
+	 }
 	
 	
 	/**
 	 * printing grid for work with it
 	 * @param interval
-	 * @param color
+	 * @param color 
 	 */
 	public void printGrid( int interval, primitives.Color color)
 	{
@@ -144,6 +195,14 @@ public class Render {
 	public void writeToImage() {
 		imageWriter.writeToImage();
 		
+	}
+	
+	primitives.Color avrageColor (double red, double green, double blue, int numberOfsampel){
+		double red1=  red/numberOfsampel;
+		double green1= green/numberOfsampel;
+		double blue1 =blue/numberOfsampel;
+		primitives.Color pixelColor = new primitives.Color(red1,green1,blue1);
+		return pixelColor;
 	}
 	
 }
