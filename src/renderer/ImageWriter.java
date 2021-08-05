@@ -14,80 +14,107 @@ import javax.imageio.*;
  * producing a non-optimized jpeg image from this matrix. The class although is
  * responsible of holding image related parameters of View Plane - pixel matrix
  * size and resolution
- * 
+ *
  * @author Dan
  */
 public class ImageWriter {
-	private int nX;
-	private int nY;
- 
-	private static final String FOLDER_PATH = System.getProperty("user.dir") + "/images";
+    private int nX;
+    private int nY;
+    private int mini_nX;
+    private int mini_nY;
+    private static final String FOLDER_PATH = System.getProperty("user.dir") + "/images";
+    private BufferedImage image;
+    private String imageName;
+    private Logger logger = Logger.getLogger("ImageWriter");
 
-	private BufferedImage image;
-	private String imageName;
-	
-	private Logger logger = Logger.getLogger("ImageWriter");
+    //region Constructor
+    // ***************** Constructors ********************** //
 
-	// ***************** Constructors ********************** //
-	/**
-	 * Image Writer constructor accepting image name and View Plane parameters,
-	 * @param imageName the name of jpeg file
-	 * @param nX        amount of pixels by Width
-	 * @param nY        amount of pixels by height
-	 */
-	public ImageWriter(String imageName, int nX, int nY) {
-		this.imageName = imageName;
-		this.nX = nX;
-		this.nY = nY;
+    /**
+     * Image Writer constructor accepting image name and View Plane parameters,
+     *
+     * @param imageName the name of jpeg file
+     * @param nX        amount of pixels by Width
+     * @param nY        amount of pixels by height
+     */
+    public ImageWriter(String imageName, int nX, int nY) {
+        this.imageName = imageName;
+        this.nX = nX;
+        this.nY = nY;
+//        // default value for superSampling
+//        this.mini_nX = 7;
+//        this.mini_nY = 7;
 
-		image = new BufferedImage(nX, nY, BufferedImage.TYPE_INT_RGB);
-	}
+        image = new BufferedImage(nX, nY, BufferedImage.TYPE_INT_RGB);
+    }
+    //endregion
 
-	// ***************** Getters/Setters ********************** //
-	/**
-	 * View Plane Y axis resolution
-	 * 
-	 * @return the amount of vertical pixels
-	 */
-	public int getNy() {
-		return nY;
-	}
+    //region Getters
+    /**
+     * getter
+     * @return the amount of vertical pixels
+     */
+    public int getNy() {
+        return nY;
+    }
 
-	/**
-	 * View Plane X axis resolution
-	 * 
-	 * @return the amount of horizontal pixels
-	 */
-	public int getNx() {
-		return nX;
-	}
+    /**
+     * getter
+     * @return the amount of horizontal pixels
+     */
+    public int getNx() {
+        return nX;
+    }
 
-	// ***************** Operations ******************** //
+    public int getMini_nX() {
+        return mini_nX;
+    }
 
-	/**
-	 * Function writeToImage produces unoptimized png file of the image according to
-	 * pixel color matrix in the directory of the project
-	 */
-	public void writeToImage() {
-		try {
-			File file = new File(FOLDER_PATH + '/' + imageName + ".png");
-			file.mkdirs();
-			ImageIO.write(image, "png", file);
-		} catch (IOException e) {
-			logger.log(Level.SEVERE, "I/O error", e);
-		}
-	}
+    public int getMini_nY() {
+        return mini_nY;
+    }
+    //endregion
 
-	/**
-	 * The function writePixel writes a color of a specific pixel into pixel color
-	 * matrix
-	 * 
-	 * @param xIndex X axis index of the pixel
-	 * @param yIndex Y axis index of the pixel
-	 * @param color  final color of the pixel
-	 */
-	public void writePixel(int xIndex, int yIndex, Color color) {
-		image.setRGB(xIndex, yIndex, color.getColor().getRGB());
-	}
+    //region Setters
+    /**
+     * setter using builder pattern
+     * @param mini_nX number of mini pixels in a pixel on x-axis
+     * @return this for chaining purposes
+     */
+    public ImageWriter setMini_nX_nY(int mini_nX, int mini_nY) {
+        this.mini_nX = mini_nX;
+        this.mini_nY = mini_nY;
+        return this;
+    }
+
+
+    //endregion
+
+    // ***************** Operations ******************** //
+
+    /**
+     * Function writeToImage produces unoptimized png file of the image according to
+     * pixel color matrix in the directory of the project
+     */
+    public void writeToImage() {
+        try {
+            File file = new File(FOLDER_PATH + '/' + imageName + ".png");
+            ImageIO.write(image, "png", file);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "I/O error", e);
+        }
+    }
+
+    /**
+     * The function writePixel writes a color of a specific pixel into pixel color
+     * matrix
+     *
+     * @param xIndex X axis index of the pixel
+     * @param yIndex Y axis index of the pixel
+     * @param color  final color of the pixel
+     */
+    public void writePixel(int xIndex, int yIndex, Color color) {
+        image.setRGB(xIndex, yIndex, color.getColor().getRGB());
+    }
 
 }
